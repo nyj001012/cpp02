@@ -6,21 +6,30 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/13 15:19:45 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/13 15:49:59 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//
-// Created by 나예진 on 2023/06/13.
-//
 
 #ifndef CPP02_FIXED_HPP
 #define CPP02_FIXED_HPP
 
+# include <iostream>
 
+/**
+ * @brief Fixed class
+ */
 class Fixed {
+ private:
+  int _fixed_point_value; ///< An integer to store the fixed point value.
+  static const int _FRACTIONAL_BITS = 8; ///< A static constant integer to store the number of fractional bits
 
+ public:
+  Fixed(void);
+  ~Fixed(void);
+  Fixed(const Fixed &object);
+  Fixed &operator=(const Fixed &ref);
+  int getRawBits(void) const;
+  void setRawBits(int const raw);
 };
-
 
 #endif //CPP02_FIXED_HPP
