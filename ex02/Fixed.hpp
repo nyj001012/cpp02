@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 17:03:25 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:10:07 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,31 @@ class Fixed {
   void setRawBits(int const raw);
   float toFloat(void) const;
   int toInt(void) const;
+  // pre-increment/decrement operator
+  Fixed operator++(void);
+  Fixed operator--(void);
+  // post-increment/decrement operator
+  Fixed operator++(int);
+  Fixed operator--(int);
+  // comparison operator
+  bool operator>(const Fixed &ref) const;
+  bool operator<(const Fixed &ref) const;
+  bool operator>=(const Fixed &ref) const;
+  bool operator<=(const Fixed &ref) const;
+  bool operator==(const Fixed &ref) const;
+  bool operator!=(const Fixed &ref) const;
+  // arithmetic operator
+  Fixed operator+(const Fixed &ref) const;
+  Fixed operator-(const Fixed &ref) const;
+  Fixed operator*(const Fixed &ref) const;
+  Fixed operator/(const Fixed &ref) const;
+  // min/max function
+  static Fixed &min(Fixed &a, Fixed &b);
+  static Fixed &max(Fixed &a, Fixed &b);
+  static const Fixed &min(const Fixed &a, const Fixed &b);
+  static const Fixed &max(const Fixed &a, const Fixed &b);
 };
 
-std::ostream& operator<<(std::ostream& os, const Fixed& ref);
+std::ostream &operator<<(std::ostream &os, const Fixed &ref);
 
 #endif //CPP02_FIXED_HPP
