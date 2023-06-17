@@ -1,4 +1,4 @@
-NAME = fixed_point
+NAME = triangle
 SRCS = main.cpp \
 	   Fixed.cpp \
 	   Point.cpp \

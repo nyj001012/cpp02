@@ -6,14 +6,17 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 17:20:01 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 18:54:21 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 19:40:49 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
 float getDotProduct(Point const a, Point const b) {
-  return (a.getX() * b.getX() + a.getY() * b.getY());
+  Fixed dotProduct;
+
+  dotProduct = a.getX() * b.getX() + a.getY() * b.getY();
+  return (dotProduct.toFloat());
 }
 
 /**
@@ -28,14 +31,17 @@ float getDotProduct(Point const a, Point const b) {
  */
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
   Point ab, bc, ca, ap, bp, cp;
-  float dotProdABAP, dotProdBCBP, dotProdCACP;
+  Fixed dotProdABAP, dotProdBCBP, dotProdCACP;
 
-  ab = Point(b.getX() - a.getX(), b.getY() - a.getY());
-  bc = Point(c.getX() - b.getX(), c.getY() - b.getY());
-  ca = Point(a.getX() - c.getX(), a.getY() - c.getY());
-  ap = Point(point.getX() - a.getX(), point.getY() - a.getY());
-  bp = Point(point.getX() - b.getX(), point.getY() - b.getY());
-  cp = Point(point.getX() - c.getX(), point.getY() - c.getY());
+  ab = Point((b.getX() - a.getX()).toFloat(), (b.getY() - a.getY()).toFloat());
+  bc = Point((c.getX() - b.getX()).toFloat(), (c.getY() - b.getY()).toFloat());
+  ca = Point((a.getX() - c.getX()).toFloat(), (a.getY() - c.getY()).toFloat());
+  ap = Point((point.getX() - a.getX()).toFloat(),
+             (point.getY() - a.getY()).toFloat());
+  bp = Point((point.getX() - b.getX()).toFloat(),
+             (point.getY() - b.getY()).toFloat());
+  cp = Point((point.getX() - c.getX()).toFloat(),
+             (point.getY() - c.getY()).toFloat());
   dotProdABAP = getDotProduct(ab, ap);
   dotProdBCBP = getDotProduct(bc, bp);
   dotProdCACP = getDotProduct(ca, cp);
