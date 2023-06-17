@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 17:17:33 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:50:25 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void Fixed::setRawBits(const int raw_bits) {
 }
 
 /**
- * convert the fixed-point value to a floating-point value
+ * Convert the fixed-point value to a floating-point value
  * @return floating-point value of _fixed_point_value;
  */
 float Fixed::toFloat(void) const {
@@ -56,7 +56,7 @@ float Fixed::toFloat(void) const {
 }
 
 /**
- * convert the fixed-point value to an integer value
+ * Convert the fixed-point value to an integer value
  * @return integer value of _fixed_point_value
  */
 int Fixed::toInt(void) const {
