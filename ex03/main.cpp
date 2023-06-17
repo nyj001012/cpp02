@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:43 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 19:37:57 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 19:42:52 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int main(void) {
   c = Point(cx, cy);
   point = Point(px, py);
   if (bsp(a, b, c, point))
-    std::cout << "The point is \033[0;36minside\033[0m the triangle" << std::endl;
+    std::cout << "The point is \033[0;36minside\033[0m the triangle"
+              << std::endl;
   else
-    std::cout << "The point is \033[0;36moutside\033[0m the triangle" << std::endl;
+    std::cout << "The point is \033[0;36moutside\033[0m the triangle"
+              << std::endl;
   return 0;
 }
