@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 15:29:56 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:03:34 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CPP02_FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
 /**
  * @brief Fixed class
