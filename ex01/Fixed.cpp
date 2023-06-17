@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 16:00:19 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 16:31:24 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ Fixed::Fixed(const Fixed &object) {
 }
 
 Fixed &Fixed::operator=(const Fixed &ref) {
-  std::cout << "Assignment operator called" << std::endl;
-  if (this != &ref) {
-    this->_fixed_point_value = ref.getRawBits();
-  }
+  std::cout << "Assignation operator called" << std::endl;
+  this->_fixed_point_value = ref.getRawBits();
   return (*this);
 }
 
