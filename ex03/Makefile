@@ -1,6 +1,8 @@
 NAME = fixed_point
 SRCS = main.cpp \
-	   Fixed.cpp
+	   Fixed.cpp \
+	   Point.cpp \
+	   bsp.cpp
 OBJS = ${SRCS:.cpp=.o}
 
 CC = clang++
