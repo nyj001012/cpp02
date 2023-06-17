@@ -6,7 +6,7 @@
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:19:32 by yena              #+#    #+#             */
-/*   Updated: 2023/06/13 15:49:59 by yena             ###   ########.fr       */
+/*   Updated: 2023/06/17 15:29:56 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,16 @@ class Fixed {
  public:
   Fixed(void);
   ~Fixed(void);
+  Fixed(const int fixed_point_value);
+  Fixed(const float floating_point_number);
   Fixed(const Fixed &object);
   Fixed &operator=(const Fixed &ref);
   int getRawBits(void) const;
   void setRawBits(int const raw);
+  float toFloat(void) const;
+  int toInt(void) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& ref);
 
 #endif //CPP02_FIXED_HPP
