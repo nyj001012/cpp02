@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yena <yena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 15:19:43 by yena              #+#    #+#             */
-/*   Updated: 2023/06/17 17:05:16 by yena             ###   ########.fr       */
+/*   Created: 2023/06/17 17:19:48 by yena              #+#    #+#             */
+/*   Updated: 2023/06/17 17:19:50 by yena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+//
+// Created by 나예진 on 2023/06/17.
+//
 
-int main( void ) {
-  Fixed a;
-  Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+#ifndef CPP02_EX03_POINT_HPP_
+#define CPP02_EX03_POINT_HPP_
 
-  std::cout << a << std::endl;
-  std::cout << ++a << std::endl;
-  std::cout << a << std::endl;
-  std::cout << a++ << std::endl;
-  std::cout << a << std::endl;
+class Point {
 
-  std::cout << b << std::endl;
+};
 
-  std::cout << Fixed::max( a, b ) << std::endl;
-
-  return 0;
-}
+#endif //CPP02_EX03_POINT_HPP_
