@@ -33,10 +33,41 @@ float bsp_abs(float a) {
 float getTriangleArea(Point const p1, Point const p2, Point const p3) {
   float area;
 
-  area = bsp_abs((p1.getX().toFloat() * (p2.getY() - p3.getY()).toFloat()
-      + p2.getX().toFloat() * (p3.getY() - p1.getY()).toFloat()
-      + p3.getX().toFloat() * (p1.getY() - p2.getY()).toFloat()) / 2);
+  area = bsp_abs(((p1.getX() * p2.getY()
+      + p2.getX() * p3.getY()
+      + p3.getX() * p1.getY())
+      - (p2.getX() * p1.getY()
+          + p3.getX() * p2.getY()
+          + p1.getX() * p3.getY())).toFloat()) / 2;
   return (area);
+}
+
+/**
+ * Check if point is on A, B, C
+ * Calculate cross product of vector OA & OP, OB & OP, OC & OP. (O means origin).
+ * If cross product is 0, then sine value of OA OP is 0.
+ * That means the angle between OA and OP is 0.
+ * @param a
+ * @param b
+ * @param c
+ * @param point
+ * @return
+ */
+bool is_on_side(Point const a, Point const b, Point const c, Point const point) {
+
+  float crossProductAP, crossProductBP, crossProductCP;
+
+  crossProductAP = (a.getX() * point.getY() - point.getX() * a.getY()).toFloat();
+  crossProductBP = (b.getX() * point.getY() - point.getX() * b.getY()).toFloat();
+  crossProductCP = (c.getX() * point.getY() - point.getX() * c.getY()).toFloat();
+  if (!crossProductAP)
+    return (true);
+  else if (!crossProductBP)
+    return (true);
+  else if (!crossProductCP)
+    return (true);
+  else
+    return (false);
 }
 
 /**
@@ -54,15 +85,11 @@ float getTriangleArea(Point const p1, Point const p2, Point const p3) {
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
   float triangleAreaABP, triangleAreaBCP, triangleAreaCAP, triangleArea;
 
+  if (is_on_side(a, b, c, point))
+    return (false);
   triangleAreaABP = getTriangleArea(a, b, point);
   triangleAreaBCP = getTriangleArea(b, c, point);
   triangleAreaCAP = getTriangleArea(c, a, point);
   triangleArea = getTriangleArea(a, b, c);
-  std::cout << triangleAreaABP << std::endl;
-  std::cout << triangleAreaBCP << std::endl;
-  std::cout << triangleAreaCAP << std::endl;
-  std::cout << triangleArea << std::endl;
-  if (!triangleAreaABP || !triangleAreaBCP || !triangleAreaCAP)
-    return false;
   return (triangleAreaABP + triangleAreaBCP + triangleAreaCAP == triangleArea);
 }
