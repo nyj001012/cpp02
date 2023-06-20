@@ -12,17 +12,39 @@
 
 #include "Point.hpp"
 
-float getDotProduct(Point const a, Point const b) {
-  Fixed dotProduct;
+/**
+ * @brief Get absolute value.
+ * @param a
+ * @return
+ */
+float bsp_abs(float a) {
+  if (a < 0)
+    return (a * -1);
+  return (a);
+}
 
-  dotProduct = a.getX() * b.getX() + a.getY() * b.getY();
-  return (dotProduct.toFloat());
+/**
+ * Calculate triangle area.
+ * @param p1
+ * @param p2
+ * @param p3
+ * @return area of triangle
+ */
+float getTriangleArea(Point const p1, Point const p2, Point const p3) {
+  float area;
+
+  area = bsp_abs((p1.getX().toFloat() * (p2.getY() - p3.getY()).toFloat()
+      + p2.getX().toFloat() * (p3.getY() - p1.getY()).toFloat()
+      + p3.getX().toFloat() * (p1.getY() - p2.getY()).toFloat()) / 2);
+  return (area);
 }
 
 /**
  * @brief Check if point is in triangle.
- * Calculate the vector of each side of the triangle and the vector from the point to the vertex.
- * If the cross product of the vector of each side and the vector from the point to the vertex is the same direction, the point is in the triangle.
+ * Calculate area of triangle consist of ABP, BCP, CAP.
+ * If areaABP + areaBCP + areaCAP is same with area of triangle ABC,
+ * then point P is inside the triangle.
+ * But if one of area is 0, then P is on the side AB or BC or CA, and return false.
  * @param a
  * @param b
  * @param c
@@ -30,22 +52,17 @@ float getDotProduct(Point const a, Point const b) {
  * @return true if point is in triangle
  */
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
-  Point ab, bc, ca, ap, bp, cp;
-  Fixed dotProdABAP, dotProdBCBP, dotProdCACP;
+  float triangleAreaABP, triangleAreaBCP, triangleAreaCAP, triangleArea;
 
-  ab = Point((b.getX() - a.getX()).toFloat(), (b.getY() - a.getY()).toFloat());
-  bc = Point((c.getX() - b.getX()).toFloat(), (c.getY() - b.getY()).toFloat());
-  ca = Point((a.getX() - c.getX()).toFloat(), (a.getY() - c.getY()).toFloat());
-  ap = Point((point.getX() - a.getX()).toFloat(),
-             (point.getY() - a.getY()).toFloat());
-  bp = Point((point.getX() - b.getX()).toFloat(),
-             (point.getY() - b.getY()).toFloat());
-  cp = Point((point.getX() - c.getX()).toFloat(),
-             (point.getY() - c.getY()).toFloat());
-  dotProdABAP = getDotProduct(ab, ap);
-  dotProdBCBP = getDotProduct(bc, bp);
-  dotProdCACP = getDotProduct(ca, cp);
-  if (dotProdABAP > 0 && dotProdBCBP > 0 && dotProdCACP > 0)
-    return true;
-  return false;
+  triangleAreaABP = getTriangleArea(a, b, point);
+  triangleAreaBCP = getTriangleArea(b, c, point);
+  triangleAreaCAP = getTriangleArea(c, a, point);
+  triangleArea = getTriangleArea(a, b, c);
+  std::cout << triangleAreaABP << std::endl;
+  std::cout << triangleAreaBCP << std::endl;
+  std::cout << triangleAreaCAP << std::endl;
+  std::cout << triangleArea << std::endl;
+  if (!triangleAreaABP || !triangleAreaBCP || !triangleAreaCAP)
+    return false;
+  return (triangleAreaABP + triangleAreaBCP + triangleAreaCAP == triangleArea);
 }

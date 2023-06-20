@@ -20,13 +20,13 @@ int getCoordinates(std::string name, float &x, float &y) {
   std::cout << "x: ";
   std::cin >> x;
   if (std::cin.fail()) {
-    std::cout << "\033[0;31mInvalid input\033[0m" << std::endl;
+    std::cout << F_RED << "Invalid input" << FB_DEFAULT << std::endl;
     return (1);
   }
   std::cout << "y: ";
   std::cin >> y;
   if (std::cin.fail()) {
-    std::cout << "\033[0;31mInvalid input\033[0m" << std::endl;
+    std::cout << F_RED << "Invalid input" << FB_DEFAULT << std::endl;
     return (1);
   }
   return (0);
@@ -46,10 +46,10 @@ int main(void) {
   c = Point(cx, cy);
   point = Point(px, py);
   if (bsp(a, b, c, point))
-    std::cout << "The point is \033[0;36minside\033[0m the triangle"
-              << std::endl;
+    std::cout << "The point is " << F_CYAN << "inside" << FB_DEFAULT
+              << " the triangle" << std::endl;
   else
-    std::cout << "The point is \033[0;36moutside\033[0m the triangle"
-              << std::endl;
-  return 0;
+    std::cout << "The point is " << F_MAGENTA << "outside" << FB_DEFAULT
+              << " the triangle" << std::endl;
+  return (0);
 }

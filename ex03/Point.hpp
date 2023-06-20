@@ -14,6 +14,7 @@
 #define CPP02_EX03_POINT_HPP_
 
 # include "Fixed.hpp"
+# include "font.hpp"
 
 /**
  * @brief Point class
