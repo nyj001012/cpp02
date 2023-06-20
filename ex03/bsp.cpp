@@ -76,6 +76,7 @@ bool is_on_side(Point const a, Point const b, Point const c, Point const point) 
  * If areaABP + areaBCP + areaCAP is same with area of triangle ABC,
  * then point P is inside the triangle.
  * But if one of area is 0, then P is on the side AB or BC or CA, and return false.
+ * @see https://www.algeomath.kr/algeomath/app/make.do
  * @param a
  * @param b
  * @param c
