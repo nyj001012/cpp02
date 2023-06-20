@@ -20,7 +20,7 @@
  */
 class Fixed {
  private:
-  int _fixed_point_value; ///< An integer to store the fixed point value.
+  int _fixed_point_value;                ///< An integer to store the fixed point value.
   static const int _FRACTIONAL_BITS = 8; ///< A static constant integer to store the number of fractional bits
 
  public:

@@ -39,7 +39,7 @@ Fixed::Fixed(const Fixed &object) {
 }
 
 Fixed &Fixed::operator=(const Fixed &ref) {
-  std::cout << "Assignation operator called" << std::endl;
+  std::cout << "Copy assignment operator called" << std::endl;
   this->_fixed_point_value = ref.getRawBits();
   return (*this);
 }
